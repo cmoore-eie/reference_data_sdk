@@ -1,0 +1,563 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: contact@snippets.local
+  description: Test description
+  license:
+    name: BSD License
+  termsOfService: https://www.google.com/policies/terms/
+  title: Snippets API
+  version: v1
+servers:
+- url: http://localhost:8000/api
+security:
+- Basic: []
+paths:
+  /branch/:
+    get:
+      operationId: branch_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Branch'
+                type: array
+          description: ""
+      tags:
+      - branch
+      x-accepts: application/json
+    post:
+      operationId: branch_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+          description: ""
+      tags:
+      - branch
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /branch/{item_uuid}/:
+    delete:
+      operationId: branch_delete
+      parameters:
+      - description: A unique value identifying this branch.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - branch
+      x-accepts: application/json
+    get:
+      operationId: branch_read
+      parameters:
+      - description: A unique value identifying this branch.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+          description: ""
+      tags:
+      - branch
+      x-accepts: application/json
+    patch:
+      operationId: branch_partial_update
+      parameters:
+      - description: A unique value identifying this branch.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+          description: ""
+      tags:
+      - branch
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: branch_update
+      parameters:
+      - description: A unique value identifying this branch.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+          description: ""
+      tags:
+      - branch
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /dealer/:
+    get:
+      operationId: dealer_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Dealer'
+                type: array
+          description: ""
+      tags:
+      - dealer
+      x-accepts: application/json
+    post:
+      operationId: dealer_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ""
+      tags:
+      - dealer
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /dealer/{item_uuid}/:
+    delete:
+      operationId: dealer_delete
+      parameters:
+      - description: A unique value identifying this dealer.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - dealer
+      x-accepts: application/json
+    get:
+      operationId: dealer_read
+      parameters:
+      - description: A unique value identifying this dealer.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ""
+      tags:
+      - dealer
+      x-accepts: application/json
+    patch:
+      operationId: dealer_partial_update
+      parameters:
+      - description: A unique value identifying this dealer.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ""
+      tags:
+      - dealer
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: dealer_update
+      parameters:
+      - description: A unique value identifying this dealer.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ""
+      tags:
+      - dealer
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /gender/:
+    get:
+      operationId: gender_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Gender'
+                type: array
+          description: ""
+      tags:
+      - gender
+      x-accepts: application/json
+    post:
+      operationId: gender_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gender'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gender'
+          description: ""
+      tags:
+      - gender
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /gender/{item_uuid}/:
+    delete:
+      operationId: gender_delete
+      parameters:
+      - description: A unique value identifying this gender.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - gender
+      x-accepts: application/json
+    get:
+      operationId: gender_read
+      parameters:
+      - description: A unique value identifying this gender.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gender'
+          description: ""
+      tags:
+      - gender
+      x-accepts: application/json
+    patch:
+      operationId: gender_partial_update
+      parameters:
+      - description: A unique value identifying this gender.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gender'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gender'
+          description: ""
+      tags:
+      - gender
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: gender_update
+      parameters:
+      - description: A unique value identifying this gender.
+        in: path
+        name: item_uuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gender'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gender'
+          description: ""
+      tags:
+      - gender
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Branch:
+      example:
+        update_time: 2000-01-23T04:56:07.000+00:00
+        code: code
+        create_time: 2000-01-23T04:56:07.000+00:00
+        BranchType: local
+        item_uuid: item_uuid
+        name: name
+        effective_date: 2000-01-23
+        locked: true
+        expiration_date: 2000-01-23
+      properties:
+        code:
+          maxLength: 50
+          minLength: 1
+          title: Code
+          type: string
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+        locked:
+          nullable: true
+          title: Locked
+          type: boolean
+        create_time:
+          format: date-time
+          nullable: true
+          title: Create time
+          type: string
+        update_time:
+          format: date-time
+          nullable: true
+          title: Update time
+          type: string
+        item_uuid:
+          maxLength: 255
+          minLength: 1
+          title: Item uuid
+          type: string
+        effective_date:
+          format: date
+          title: Effective date
+          type: string
+        expiration_date:
+          format: date
+          nullable: true
+          title: Expiration date
+          type: string
+        BranchType:
+          enum:
+          - local
+          - main
+          title: BranchType
+          type: string
+      required:
+      - code
+      - effective_date
+      - item_uuid
+      type: object
+    Dealer:
+      example:
+        update_time: 2000-01-23T04:56:07.000+00:00
+        code: code
+        create_time: 2000-01-23T04:56:07.000+00:00
+        item_uuid: item_uuid
+        name: name
+        effective_date: 2000-01-23
+        locked: true
+        expiration_date: 2000-01-23
+      properties:
+        code:
+          maxLength: 50
+          minLength: 1
+          title: Code
+          type: string
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+        locked:
+          nullable: true
+          title: Locked
+          type: boolean
+        create_time:
+          format: date-time
+          nullable: true
+          title: Create time
+          type: string
+        update_time:
+          format: date-time
+          nullable: true
+          title: Update time
+          type: string
+        item_uuid:
+          maxLength: 255
+          minLength: 1
+          title: Item uuid
+          type: string
+        effective_date:
+          format: date
+          title: Effective date
+          type: string
+        expiration_date:
+          format: date
+          nullable: true
+          title: Expiration date
+          type: string
+      required:
+      - code
+      - effective_date
+      - item_uuid
+      type: object
+    Gender:
+      example:
+        update_time: 2000-01-23T04:56:07.000+00:00
+        code: code
+        create_time: 2000-01-23T04:56:07.000+00:00
+        item_uuid: item_uuid
+        name: name
+        effective_date: 2000-01-23
+        locked: true
+        expiration_date: 2000-01-23
+      properties:
+        code:
+          maxLength: 50
+          minLength: 1
+          title: Code
+          type: string
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+        locked:
+          nullable: true
+          title: Locked
+          type: boolean
+        create_time:
+          format: date-time
+          nullable: true
+          title: Create time
+          type: string
+        update_time:
+          format: date-time
+          nullable: true
+          title: Update time
+          type: string
+        item_uuid:
+          maxLength: 255
+          minLength: 1
+          title: Item uuid
+          type: string
+        effective_date:
+          format: date
+          title: Effective date
+          type: string
+        expiration_date:
+          format: date
+          nullable: true
+          title: Expiration date
+          type: string
+      required:
+      - code
+      - effective_date
+      - item_uuid
+      type: object
+  securitySchemes:
+    Basic:
+      scheme: basic
+      type: http
+
