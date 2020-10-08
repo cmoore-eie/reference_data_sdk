@@ -15,13 +15,16 @@ package blog.userfunction.sdk.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import blog.userfunction.sdk.model.DealerLocation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -38,7 +41,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dealer.JSON_PROPERTY_UPDATE_TIME,
   Dealer.JSON_PROPERTY_ITEM_UUID,
   Dealer.JSON_PROPERTY_EFFECTIVE_DATE,
-  Dealer.JSON_PROPERTY_EXPIRATION_DATE
+  Dealer.JSON_PROPERTY_EXPIRATION_DATE,
+  Dealer.JSON_PROPERTY_DEALER_LOCATIONS
 })
 
 public class Dealer {
@@ -65,6 +69,9 @@ public class Dealer {
 
   public static final String JSON_PROPERTY_EXPIRATION_DATE = "expiration_date";
   private JsonNullable<Date> expirationDate = JsonNullable.<Date>undefined();
+
+  public static final String JSON_PROPERTY_DEALER_LOCATIONS = "dealer_locations";
+  private List<DealerLocation> dealerLocations = new ArrayList<>();
 
 
   public Dealer code(String code) {
@@ -304,6 +311,35 @@ public class Dealer {
   }
 
 
+  public Dealer dealerLocations(List<DealerLocation> dealerLocations) {
+    
+    this.dealerLocations = dealerLocations;
+    return this;
+  }
+
+  public Dealer addDealerLocationsItem(DealerLocation dealerLocationsItem) {
+    this.dealerLocations.add(dealerLocationsItem);
+    return this;
+  }
+
+   /**
+   * Get dealerLocations
+   * @return dealerLocations
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_DEALER_LOCATIONS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<DealerLocation> getDealerLocations() {
+    return dealerLocations;
+  }
+
+
+  public void setDealerLocations(List<DealerLocation> dealerLocations) {
+    this.dealerLocations = dealerLocations;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -320,12 +356,13 @@ public class Dealer {
         Objects.equals(this.updateTime, dealer.updateTime) &&
         Objects.equals(this.itemUuid, dealer.itemUuid) &&
         Objects.equals(this.effectiveDate, dealer.effectiveDate) &&
-        Objects.equals(this.expirationDate, dealer.expirationDate);
+        Objects.equals(this.expirationDate, dealer.expirationDate) &&
+        Objects.equals(this.dealerLocations, dealer.dealerLocations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, locked, createTime, updateTime, itemUuid, effectiveDate, expirationDate);
+    return Objects.hash(code, name, locked, createTime, updateTime, itemUuid, effectiveDate, expirationDate, dealerLocations);
   }
 
 
@@ -341,6 +378,7 @@ public class Dealer {
     sb.append("    itemUuid: ").append(toIndentedString(itemUuid)).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    dealerLocations: ").append(toIndentedString(dealerLocations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

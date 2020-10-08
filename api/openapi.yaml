@@ -16,6 +16,27 @@ paths:
   /branch/:
     get:
       operationId: branch_list
+      parameters:
+      - in: query
+        name: with_uuid
+        schema:
+          type: string
+      - in: query
+        name: with_code
+        schema:
+          type: string
+      - in: query
+        name: with_name
+        schema:
+          type: string
+      - in: query
+        name: with_effectiveDate
+        schema:
+          type: string
+      - in: query
+        name: with_expirationDate
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -141,6 +162,27 @@ paths:
   /dealer/:
     get:
       operationId: dealer_list
+      parameters:
+      - in: query
+        name: with_uuid
+        schema:
+          type: string
+      - in: query
+        name: with_code
+        schema:
+          type: string
+      - in: query
+        name: with_name
+        schema:
+          type: string
+      - in: query
+        name: with_effectiveDate
+        schema:
+          type: string
+      - in: query
+        name: with_expirationDate
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -266,6 +308,27 @@ paths:
   /gender/:
     get:
       operationId: gender_list
+      parameters:
+      - in: query
+        name: with_uuid
+        schema:
+          type: string
+      - in: query
+        name: with_code
+        schema:
+          type: string
+      - in: query
+        name: with_name
+        schema:
+          type: string
+      - in: query
+        name: with_effectiveDate
+        schema:
+          type: string
+      - in: query
+        name: with_expirationDate
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -450,12 +513,66 @@ components:
       - effective_date
       - item_uuid
       type: object
+    DealerLocation:
+      example:
+        location_name: location_name
+        address_line2: address_line2
+        address_line1: address_line1
+        city: city
+        post_code: post_code
+        dealer: dealer
+        id: 0
+      properties:
+        id:
+          readOnly: true
+          title: ID
+          type: integer
+        location_name:
+          maxLength: 255
+          title: Location name
+          type: string
+        address_line1:
+          maxLength: 255
+          title: Address line1
+          type: string
+        address_line2:
+          maxLength: 255
+          title: Address line2
+          type: string
+        city:
+          maxLength: 255
+          title: City
+          type: string
+        post_code:
+          maxLength: 255
+          title: Post code
+          type: string
+        dealer:
+          nullable: true
+          title: Dealer
+          type: string
+      type: object
     Dealer:
       example:
         update_time: 2000-01-23T04:56:07.000+00:00
         code: code
         create_time: 2000-01-23T04:56:07.000+00:00
         item_uuid: item_uuid
+        dealer_locations:
+        - location_name: location_name
+          address_line2: address_line2
+          address_line1: address_line1
+          city: city
+          post_code: post_code
+          dealer: dealer
+          id: 0
+        - location_name: location_name
+          address_line2: address_line2
+          address_line1: address_line1
+          city: city
+          post_code: post_code
+          dealer: dealer
+          id: 0
         name: name
         effective_date: 2000-01-23
         locked: true
@@ -498,8 +615,13 @@ components:
           nullable: true
           title: Expiration date
           type: string
+        dealer_locations:
+          items:
+            $ref: '#/components/schemas/DealerLocation'
+          type: array
       required:
       - code
+      - dealer_locations
       - effective_date
       - item_uuid
       type: object
