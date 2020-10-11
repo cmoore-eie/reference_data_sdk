@@ -31,13 +31,13 @@ public interface BranchApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this branch. (required)
+   * @param itemIdentifier A unique value identifying this branch. (required)
    */
-  @RequestLine("DELETE /branch/{itemUuid}/")
+  @RequestLine("DELETE /branch/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  void branchDelete(@Param("itemUuid") String itemUuid);
+  void branchDelete(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
@@ -110,40 +110,40 @@ public interface BranchApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this branch. (required)
+   * @param itemIdentifier A unique value identifying this branch. (required)
    * @param data  (required)
    * @return Branch
    */
-  @RequestLine("PATCH /branch/{itemUuid}/")
+  @RequestLine("PATCH /branch/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Branch branchPartialUpdate(@Param("itemUuid") String itemUuid, Branch data);
+  Branch branchPartialUpdate(@Param("itemIdentifier") String itemIdentifier, Branch data);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this branch. (required)
+   * @param itemIdentifier A unique value identifying this branch. (required)
    * @return Branch
    */
-  @RequestLine("GET /branch/{itemUuid}/")
+  @RequestLine("GET /branch/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  Branch branchRead(@Param("itemUuid") String itemUuid);
+  Branch branchRead(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this branch. (required)
+   * @param itemIdentifier A unique value identifying this branch. (required)
    * @param data  (required)
    * @return Branch
    */
-  @RequestLine("PUT /branch/{itemUuid}/")
+  @RequestLine("PUT /branch/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Branch branchUpdate(@Param("itemUuid") String itemUuid, Branch data);
+  Branch branchUpdate(@Param("itemIdentifier") String itemIdentifier, Branch data);
 }

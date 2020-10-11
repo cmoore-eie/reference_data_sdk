@@ -42,14 +42,6 @@ public class DealerLocationTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
      * Test the property 'locationName'
      */
     @Test
@@ -90,11 +82,19 @@ public class DealerLocationTest {
     }
 
     /**
-     * Test the property 'dealer'
+     * Test the property 'purge'
      */
     @Test
-    public void dealerTest() {
-        // TODO: test dealer
+    public void purgeTest() {
+        // TODO: test purge
+    }
+
+    /**
+     * Test the property 'itemIdentifier'
+     */
+    @Test
+    public void itemIdentifierTest() {
+        // TODO: test itemIdentifier
     }
 
 }

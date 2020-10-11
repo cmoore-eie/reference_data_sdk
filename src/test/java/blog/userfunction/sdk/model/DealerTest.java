@@ -13,13 +13,16 @@
 
 package blog.userfunction.sdk.model;
 
+import blog.userfunction.sdk.model.DealerLocation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -83,11 +86,11 @@ public class DealerTest {
     }
 
     /**
-     * Test the property 'itemUuid'
+     * Test the property 'itemIdentifier'
      */
     @Test
-    public void itemUuidTest() {
-        // TODO: test itemUuid
+    public void itemIdentifierTest() {
+        // TODO: test itemIdentifier
     }
 
     /**
@@ -104,6 +107,14 @@ public class DealerTest {
     @Test
     public void expirationDateTest() {
         // TODO: test expirationDate
+    }
+
+    /**
+     * Test the property 'locations'
+     */
+    @Test
+    public void locationsTest() {
+        // TODO: test locations
     }
 
 }

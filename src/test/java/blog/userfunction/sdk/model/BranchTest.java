@@ -83,11 +83,11 @@ public class BranchTest {
     }
 
     /**
-     * Test the property 'itemUuid'
+     * Test the property 'itemIdentifier'
      */
     @Test
-    public void itemUuidTest() {
-        // TODO: test itemUuid
+    public void itemIdentifierTest() {
+        // TODO: test itemIdentifier
     }
 
     /**

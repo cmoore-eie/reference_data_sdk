@@ -25,7 +25,7 @@ public class GenderBuilder {
     }
 
     public GenderBuilder withItemIdentifier(String inItem) {
-        builtObject.setItemUuid(inItem);
+        builtObject.setItemIdentifier(inItem);
         return this;
     }
 

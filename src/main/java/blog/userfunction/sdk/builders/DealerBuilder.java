@@ -26,7 +26,7 @@ public class DealerBuilder {
     }
 
     public DealerBuilder withItemIdentifier(String inItem) {
-        builtObject.setItemUuid(inItem);
+        builtObject.setItemIdentifier(inItem);
         return this;
     }
 
@@ -66,10 +66,10 @@ public class DealerBuilder {
     }
 
     public DealerBuilder withDealerLocations(DealerLocation inItem){
-        if(builtObject.getDealerLocations() == null){
-            builtObject.setDealerLocations(new ArrayList<DealerLocation>());
+        if(builtObject.getLocations() == null){
+            builtObject.setLocations(new ArrayList<DealerLocation>());
         }
-        builtObject.addDealerLocationsItem(inItem);
+        builtObject.addLocationsItem(inItem);
         return this;
     }
 }

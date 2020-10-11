@@ -69,13 +69,13 @@ paths:
       x-codegen-request-body-name: data
       x-contentType: application/json
       x-accepts: application/json
-  /branch/{item_uuid}/:
+  /branch/{itemIdentifier}/:
     delete:
       operationId: branch_delete
       parameters:
       - description: A unique value identifying this branch.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -91,7 +91,7 @@ paths:
       parameters:
       - description: A unique value identifying this branch.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -110,7 +110,7 @@ paths:
       parameters:
       - description: A unique value identifying this branch.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -137,7 +137,7 @@ paths:
       parameters:
       - description: A unique value identifying this branch.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -215,13 +215,13 @@ paths:
       x-codegen-request-body-name: data
       x-contentType: application/json
       x-accepts: application/json
-  /dealer/{item_uuid}/:
+  /dealer/{itemIdentifier}/:
     delete:
       operationId: dealer_delete
       parameters:
       - description: A unique value identifying this dealer.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -237,7 +237,7 @@ paths:
       parameters:
       - description: A unique value identifying this dealer.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -256,7 +256,7 @@ paths:
       parameters:
       - description: A unique value identifying this dealer.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -283,7 +283,7 @@ paths:
       parameters:
       - description: A unique value identifying this dealer.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -361,13 +361,13 @@ paths:
       x-codegen-request-body-name: data
       x-contentType: application/json
       x-accepts: application/json
-  /gender/{item_uuid}/:
+  /gender/{itemIdentifier}/:
     delete:
       operationId: gender_delete
       parameters:
       - description: A unique value identifying this gender.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -383,7 +383,7 @@ paths:
       parameters:
       - description: A unique value identifying this gender.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -402,7 +402,7 @@ paths:
       parameters:
       - description: A unique value identifying this gender.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -429,7 +429,7 @@ paths:
       parameters:
       - description: A unique value identifying this gender.
         in: path
-        name: item_uuid
+        name: itemIdentifier
         required: true
         schema:
           type: string
@@ -455,15 +455,15 @@ components:
   schemas:
     Branch:
       example:
-        update_time: 2000-01-23T04:56:07.000+00:00
         code: code
-        create_time: 2000-01-23T04:56:07.000+00:00
+        createTime: 2000-01-23T04:56:07.000+00:00
         BranchType: local
-        item_uuid: item_uuid
         name: name
-        effective_date: 2000-01-23
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        itemIdentifier: itemIdentifier
         locked: true
-        expiration_date: 2000-01-23
+        effectiveDate: 2000-01-23
+        expirationDate: 2000-01-23
       properties:
         code:
           maxLength: 50
@@ -478,29 +478,29 @@ components:
           nullable: true
           title: Locked
           type: boolean
-        create_time:
+        createTime:
           format: date-time
           nullable: true
-          title: Create time
+          title: CreateTime
           type: string
-        update_time:
+        updateTime:
           format: date-time
           nullable: true
-          title: Update time
+          title: UpdateTime
           type: string
-        item_uuid:
+        itemIdentifier:
           maxLength: 255
           minLength: 1
-          title: Item uuid
+          title: ItemIdentifier
           type: string
-        effective_date:
+        effectiveDate:
           format: date
-          title: Effective date
+          title: EffectiveDate
           type: string
-        expiration_date:
+        expirationDate:
           format: date
           nullable: true
-          title: Expiration date
+          title: ExpirationDate
           type: string
         BranchType:
           enum:
@@ -510,73 +510,83 @@ components:
           type: string
       required:
       - code
-      - effective_date
-      - item_uuid
+      - effectiveDate
+      - itemIdentifier
       type: object
     DealerLocation:
       example:
-        location_name: location_name
-        address_line2: address_line2
-        address_line1: address_line1
+        locationName: locationName
         city: city
-        post_code: post_code
         dealer: dealer
-        id: 0
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        postCode: postCode
+        purge: true
+        itemIdentifier: itemIdentifier
       properties:
-        id:
-          readOnly: true
-          title: ID
-          type: integer
-        location_name:
+        locationName:
           maxLength: 255
-          title: Location name
+          title: LocationName
           type: string
-        address_line1:
+        addressLine1:
           maxLength: 255
-          title: Address line1
+          title: AddressLine1
           type: string
-        address_line2:
+        addressLine2:
           maxLength: 255
-          title: Address line2
+          title: AddressLine2
           type: string
         city:
           maxLength: 255
           title: City
           type: string
-        post_code:
+        postCode:
           maxLength: 255
-          title: Post code
+          title: PostCode
+          type: string
+        purge:
+          nullable: true
+          title: Purge
+          type: boolean
+        itemIdentifier:
+          maxLength: 255
+          minLength: 1
+          title: ItemIdentifier
           type: string
         dealer:
           nullable: true
           title: Dealer
           type: string
+      required:
+      - itemIdentifier
       type: object
     Dealer:
       example:
-        update_time: 2000-01-23T04:56:07.000+00:00
         code: code
-        create_time: 2000-01-23T04:56:07.000+00:00
-        item_uuid: item_uuid
-        dealer_locations:
-        - location_name: location_name
-          address_line2: address_line2
-          address_line1: address_line1
-          city: city
-          post_code: post_code
-          dealer: dealer
-          id: 0
-        - location_name: location_name
-          address_line2: address_line2
-          address_line1: address_line1
-          city: city
-          post_code: post_code
-          dealer: dealer
-          id: 0
+        createTime: 2000-01-23T04:56:07.000+00:00
         name: name
-        effective_date: 2000-01-23
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        locations:
+        - locationName: locationName
+          city: city
+          dealer: dealer
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          postCode: postCode
+          purge: true
+          itemIdentifier: itemIdentifier
+        - locationName: locationName
+          city: city
+          dealer: dealer
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          postCode: postCode
+          purge: true
+          itemIdentifier: itemIdentifier
+        itemIdentifier: itemIdentifier
         locked: true
-        expiration_date: 2000-01-23
+        effectiveDate: 2000-01-23
+        expirationDate: 2000-01-23
       properties:
         code:
           maxLength: 50
@@ -591,50 +601,50 @@ components:
           nullable: true
           title: Locked
           type: boolean
-        create_time:
+        createTime:
           format: date-time
           nullable: true
-          title: Create time
+          title: CreateTime
           type: string
-        update_time:
+        updateTime:
           format: date-time
           nullable: true
-          title: Update time
+          title: UpdateTime
           type: string
-        item_uuid:
+        itemIdentifier:
           maxLength: 255
           minLength: 1
-          title: Item uuid
+          title: ItemIdentifier
           type: string
-        effective_date:
+        effectiveDate:
           format: date
-          title: Effective date
+          title: EffectiveDate
           type: string
-        expiration_date:
+        expirationDate:
           format: date
           nullable: true
-          title: Expiration date
+          title: ExpirationDate
           type: string
-        dealer_locations:
+        locations:
           items:
             $ref: '#/components/schemas/DealerLocation'
           type: array
       required:
       - code
-      - dealer_locations
-      - effective_date
-      - item_uuid
+      - effectiveDate
+      - itemIdentifier
+      - locations
       type: object
     Gender:
       example:
-        update_time: 2000-01-23T04:56:07.000+00:00
         code: code
-        create_time: 2000-01-23T04:56:07.000+00:00
-        item_uuid: item_uuid
+        createTime: 2000-01-23T04:56:07.000+00:00
         name: name
-        effective_date: 2000-01-23
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        itemIdentifier: itemIdentifier
         locked: true
-        expiration_date: 2000-01-23
+        effectiveDate: 2000-01-23
+        expirationDate: 2000-01-23
       properties:
         code:
           maxLength: 50
@@ -649,34 +659,34 @@ components:
           nullable: true
           title: Locked
           type: boolean
-        create_time:
+        createTime:
           format: date-time
           nullable: true
-          title: Create time
+          title: CreateTime
           type: string
-        update_time:
+        updateTime:
           format: date-time
           nullable: true
-          title: Update time
+          title: UpdateTime
           type: string
-        item_uuid:
+        itemIdentifier:
           maxLength: 255
           minLength: 1
-          title: Item uuid
+          title: ItemIdentifier
           type: string
-        effective_date:
+        effectiveDate:
           format: date
-          title: Effective date
+          title: EffectiveDate
           type: string
-        expiration_date:
+        expirationDate:
           format: date
           nullable: true
-          title: Expiration date
+          title: ExpirationDate
           type: string
       required:
       - code
-      - effective_date
-      - item_uuid
+      - effectiveDate
+      - itemIdentifier
       type: object
   securitySchemes:
     Basic:

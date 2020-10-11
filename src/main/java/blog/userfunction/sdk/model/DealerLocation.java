@@ -30,52 +30,40 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * DealerLocation
  */
 @JsonPropertyOrder({
-  DealerLocation.JSON_PROPERTY_ID,
   DealerLocation.JSON_PROPERTY_LOCATION_NAME,
   DealerLocation.JSON_PROPERTY_ADDRESS_LINE1,
   DealerLocation.JSON_PROPERTY_ADDRESS_LINE2,
   DealerLocation.JSON_PROPERTY_CITY,
   DealerLocation.JSON_PROPERTY_POST_CODE,
+  DealerLocation.JSON_PROPERTY_PURGE,
+  DealerLocation.JSON_PROPERTY_ITEM_IDENTIFIER,
   DealerLocation.JSON_PROPERTY_DEALER
 })
 
 public class DealerLocation {
-  public static final String JSON_PROPERTY_ID = "id";
-  private Integer id;
-
-  public static final String JSON_PROPERTY_LOCATION_NAME = "location_name";
+  public static final String JSON_PROPERTY_LOCATION_NAME = "locationName";
   private String locationName;
 
-  public static final String JSON_PROPERTY_ADDRESS_LINE1 = "address_line1";
+  public static final String JSON_PROPERTY_ADDRESS_LINE1 = "addressLine1";
   private String addressLine1;
 
-  public static final String JSON_PROPERTY_ADDRESS_LINE2 = "address_line2";
+  public static final String JSON_PROPERTY_ADDRESS_LINE2 = "addressLine2";
   private String addressLine2;
 
   public static final String JSON_PROPERTY_CITY = "city";
   private String city;
 
-  public static final String JSON_PROPERTY_POST_CODE = "post_code";
+  public static final String JSON_PROPERTY_POST_CODE = "postCode";
   private String postCode;
+
+  public static final String JSON_PROPERTY_PURGE = "purge";
+  private JsonNullable<Boolean> purge = JsonNullable.<Boolean>undefined();
+
+  public static final String JSON_PROPERTY_ITEM_IDENTIFIER = "itemIdentifier";
+  private String itemIdentifier;
 
   public static final String JSON_PROPERTY_DEALER = "dealer";
   private JsonNullable<String> dealer = JsonNullable.<String>undefined();
-
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getId() {
-    return id;
-  }
-
-
 
 
   public DealerLocation locationName(String locationName) {
@@ -203,6 +191,65 @@ public class DealerLocation {
   }
 
 
+  public DealerLocation purge(Boolean purge) {
+    this.purge = JsonNullable.<Boolean>of(purge);
+    
+    return this;
+  }
+
+   /**
+   * Get purge
+   * @return purge
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonIgnore
+
+  public Boolean getPurge() {
+        return purge.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PURGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<Boolean> getPurge_JsonNullable() {
+    return purge;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PURGE)
+  public void setPurge_JsonNullable(JsonNullable<Boolean> purge) {
+    this.purge = purge;
+  }
+
+  public void setPurge(Boolean purge) {
+    this.purge = JsonNullable.<Boolean>of(purge);
+  }
+
+
+  public DealerLocation itemIdentifier(String itemIdentifier) {
+    
+    this.itemIdentifier = itemIdentifier;
+    return this;
+  }
+
+   /**
+   * Get itemIdentifier
+   * @return itemIdentifier
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_ITEM_IDENTIFIER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getItemIdentifier() {
+    return itemIdentifier;
+  }
+
+
+  public void setItemIdentifier(String itemIdentifier) {
+    this.itemIdentifier = itemIdentifier;
+  }
+
+
   public DealerLocation dealer(String dealer) {
     this.dealer = JsonNullable.<String>of(dealer);
     
@@ -247,18 +294,19 @@ public class DealerLocation {
       return false;
     }
     DealerLocation dealerLocation = (DealerLocation) o;
-    return Objects.equals(this.id, dealerLocation.id) &&
-        Objects.equals(this.locationName, dealerLocation.locationName) &&
+    return Objects.equals(this.locationName, dealerLocation.locationName) &&
         Objects.equals(this.addressLine1, dealerLocation.addressLine1) &&
         Objects.equals(this.addressLine2, dealerLocation.addressLine2) &&
         Objects.equals(this.city, dealerLocation.city) &&
         Objects.equals(this.postCode, dealerLocation.postCode) &&
+        Objects.equals(this.purge, dealerLocation.purge) &&
+        Objects.equals(this.itemIdentifier, dealerLocation.itemIdentifier) &&
         Objects.equals(this.dealer, dealerLocation.dealer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, locationName, addressLine1, addressLine2, city, postCode, dealer);
+    return Objects.hash(locationName, addressLine1, addressLine2, city, postCode, purge, itemIdentifier, dealer);
   }
 
 
@@ -266,12 +314,13 @@ public class DealerLocation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DealerLocation {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationName: ").append(toIndentedString(locationName)).append("\n");
     sb.append("    addressLine1: ").append(toIndentedString(addressLine1)).append("\n");
     sb.append("    addressLine2: ").append(toIndentedString(addressLine2)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    postCode: ").append(toIndentedString(postCode)).append("\n");
+    sb.append("    purge: ").append(toIndentedString(purge)).append("\n");
+    sb.append("    itemIdentifier: ").append(toIndentedString(itemIdentifier)).append("\n");
     sb.append("    dealer: ").append(toIndentedString(dealer)).append("\n");
     sb.append("}");
     return sb.toString();

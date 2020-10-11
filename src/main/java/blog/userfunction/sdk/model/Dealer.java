@@ -39,10 +39,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Dealer.JSON_PROPERTY_LOCKED,
   Dealer.JSON_PROPERTY_CREATE_TIME,
   Dealer.JSON_PROPERTY_UPDATE_TIME,
-  Dealer.JSON_PROPERTY_ITEM_UUID,
+  Dealer.JSON_PROPERTY_ITEM_IDENTIFIER,
   Dealer.JSON_PROPERTY_EFFECTIVE_DATE,
   Dealer.JSON_PROPERTY_EXPIRATION_DATE,
-  Dealer.JSON_PROPERTY_DEALER_LOCATIONS
+  Dealer.JSON_PROPERTY_LOCATIONS
 })
 
 public class Dealer {
@@ -55,23 +55,23 @@ public class Dealer {
   public static final String JSON_PROPERTY_LOCKED = "locked";
   private JsonNullable<Boolean> locked = JsonNullable.<Boolean>undefined();
 
-  public static final String JSON_PROPERTY_CREATE_TIME = "create_time";
+  public static final String JSON_PROPERTY_CREATE_TIME = "createTime";
   private JsonNullable<Date> createTime = JsonNullable.<Date>undefined();
 
-  public static final String JSON_PROPERTY_UPDATE_TIME = "update_time";
+  public static final String JSON_PROPERTY_UPDATE_TIME = "updateTime";
   private JsonNullable<Date> updateTime = JsonNullable.<Date>undefined();
 
-  public static final String JSON_PROPERTY_ITEM_UUID = "item_uuid";
-  private String itemUuid;
+  public static final String JSON_PROPERTY_ITEM_IDENTIFIER = "itemIdentifier";
+  private String itemIdentifier;
 
-  public static final String JSON_PROPERTY_EFFECTIVE_DATE = "effective_date";
+  public static final String JSON_PROPERTY_EFFECTIVE_DATE = "effectiveDate";
   private Date effectiveDate;
 
-  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expiration_date";
+  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
   private JsonNullable<Date> expirationDate = JsonNullable.<Date>undefined();
 
-  public static final String JSON_PROPERTY_DEALER_LOCATIONS = "dealer_locations";
-  private List<DealerLocation> dealerLocations = new ArrayList<>();
+  public static final String JSON_PROPERTY_LOCATIONS = "locations";
+  private List<DealerLocation> locations = new ArrayList<>();
 
 
   public Dealer code(String code) {
@@ -228,27 +228,27 @@ public class Dealer {
   }
 
 
-  public Dealer itemUuid(String itemUuid) {
+  public Dealer itemIdentifier(String itemIdentifier) {
     
-    this.itemUuid = itemUuid;
+    this.itemIdentifier = itemIdentifier;
     return this;
   }
 
    /**
-   * Get itemUuid
-   * @return itemUuid
+   * Get itemIdentifier
+   * @return itemIdentifier
   **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_ITEM_UUID)
+  @JsonProperty(JSON_PROPERTY_ITEM_IDENTIFIER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getItemUuid() {
-    return itemUuid;
+  public String getItemIdentifier() {
+    return itemIdentifier;
   }
 
 
-  public void setItemUuid(String itemUuid) {
-    this.itemUuid = itemUuid;
+  public void setItemIdentifier(String itemIdentifier) {
+    this.itemIdentifier = itemIdentifier;
   }
 
 
@@ -311,32 +311,32 @@ public class Dealer {
   }
 
 
-  public Dealer dealerLocations(List<DealerLocation> dealerLocations) {
+  public Dealer locations(List<DealerLocation> locations) {
     
-    this.dealerLocations = dealerLocations;
+    this.locations = locations;
     return this;
   }
 
-  public Dealer addDealerLocationsItem(DealerLocation dealerLocationsItem) {
-    this.dealerLocations.add(dealerLocationsItem);
+  public Dealer addLocationsItem(DealerLocation locationsItem) {
+    this.locations.add(locationsItem);
     return this;
   }
 
    /**
-   * Get dealerLocations
-   * @return dealerLocations
+   * Get locations
+   * @return locations
   **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_DEALER_LOCATIONS)
+  @JsonProperty(JSON_PROPERTY_LOCATIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<DealerLocation> getDealerLocations() {
-    return dealerLocations;
+  public List<DealerLocation> getLocations() {
+    return locations;
   }
 
 
-  public void setDealerLocations(List<DealerLocation> dealerLocations) {
-    this.dealerLocations = dealerLocations;
+  public void setLocations(List<DealerLocation> locations) {
+    this.locations = locations;
   }
 
 
@@ -354,15 +354,15 @@ public class Dealer {
         Objects.equals(this.locked, dealer.locked) &&
         Objects.equals(this.createTime, dealer.createTime) &&
         Objects.equals(this.updateTime, dealer.updateTime) &&
-        Objects.equals(this.itemUuid, dealer.itemUuid) &&
+        Objects.equals(this.itemIdentifier, dealer.itemIdentifier) &&
         Objects.equals(this.effectiveDate, dealer.effectiveDate) &&
         Objects.equals(this.expirationDate, dealer.expirationDate) &&
-        Objects.equals(this.dealerLocations, dealer.dealerLocations);
+        Objects.equals(this.locations, dealer.locations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, locked, createTime, updateTime, itemUuid, effectiveDate, expirationDate, dealerLocations);
+    return Objects.hash(code, name, locked, createTime, updateTime, itemIdentifier, effectiveDate, expirationDate, locations);
   }
 
 
@@ -375,10 +375,10 @@ public class Dealer {
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
     sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
-    sb.append("    itemUuid: ").append(toIndentedString(itemUuid)).append("\n");
+    sb.append("    itemIdentifier: ").append(toIndentedString(itemIdentifier)).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
-    sb.append("    dealerLocations: ").append(toIndentedString(dealerLocations)).append("\n");
+    sb.append("    locations: ").append(toIndentedString(locations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

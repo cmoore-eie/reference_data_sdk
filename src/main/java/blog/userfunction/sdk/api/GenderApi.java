@@ -31,13 +31,13 @@ public interface GenderApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this gender. (required)
+   * @param itemIdentifier A unique value identifying this gender. (required)
    */
-  @RequestLine("DELETE /gender/{itemUuid}/")
+  @RequestLine("DELETE /gender/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  void genderDelete(@Param("itemUuid") String itemUuid);
+  void genderDelete(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
@@ -110,40 +110,40 @@ public interface GenderApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this gender. (required)
+   * @param itemIdentifier A unique value identifying this gender. (required)
    * @param data  (required)
    * @return Gender
    */
-  @RequestLine("PATCH /gender/{itemUuid}/")
+  @RequestLine("PATCH /gender/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Gender genderPartialUpdate(@Param("itemUuid") String itemUuid, Gender data);
+  Gender genderPartialUpdate(@Param("itemIdentifier") String itemIdentifier, Gender data);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this gender. (required)
+   * @param itemIdentifier A unique value identifying this gender. (required)
    * @return Gender
    */
-  @RequestLine("GET /gender/{itemUuid}/")
+  @RequestLine("GET /gender/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  Gender genderRead(@Param("itemUuid") String itemUuid);
+  Gender genderRead(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this gender. (required)
+   * @param itemIdentifier A unique value identifying this gender. (required)
    * @param data  (required)
    * @return Gender
    */
-  @RequestLine("PUT /gender/{itemUuid}/")
+  @RequestLine("PUT /gender/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Gender genderUpdate(@Param("itemUuid") String itemUuid, Gender data);
+  Gender genderUpdate(@Param("itemIdentifier") String itemIdentifier, Gender data);
 }

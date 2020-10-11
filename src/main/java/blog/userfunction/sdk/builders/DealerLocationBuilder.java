@@ -18,6 +18,16 @@ public class DealerLocationBuilder {
         return builtObject;
     }
 
+    public DealerLocationBuilder withDefaults(){
+        withItemIdentifier(UUID.randomUUID().toString());
+        return this;
+    }
+
+    public DealerLocationBuilder withItemIdentifier(String inItem){
+        builtObject.setItemIdentifier(inItem);
+        return this;
+    }
+
     public DealerLocationBuilder withAddressLine1(String inItem){
         builtObject.setAddressLine1(inItem);
         return this;

@@ -25,7 +25,7 @@ public class BranchBuilder {
     }
 
     public BranchBuilder withItemIdentifier(String inItem) {
-        builtObject.setItemUuid(inItem);
+        builtObject.setItemIdentifier(inItem);
         return this;
     }
 

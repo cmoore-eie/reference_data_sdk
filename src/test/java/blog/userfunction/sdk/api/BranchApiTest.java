@@ -31,14 +31,14 @@ public class BranchApiTest {
     }
 
     @Test
-    public void contractCleanUpTest() {
+    public void branchCleanUpTest() {
         maybeCreate();
         cleanUp();
         BranchApi.BranchListQueryParams query_params = new BranchApi.BranchListQueryParams();
         List<Branch> itemList = BranchUtil.branchList(api, query_params);
         boolean found = false;
         for(Branch item: itemList){
-            if(cleanupItems.contains(item.getItemUuid())){
+            if(cleanupItems.contains(item.getItemIdentifier())){
                 found = true;
                 break;
             }
@@ -49,16 +49,16 @@ public class BranchApiTest {
     @Test
     public void branchCreateTest() {
         Branch response = BranchUtil.getApi().branchCreate(branch_data);
-        Assert.assertEquals(response.getItemUuid(), branch_data.getItemUuid());
+        Assert.assertEquals(response.getItemIdentifier(), branch_data.getItemIdentifier());
         cleanUp();
     }
 
     @Test
     public void branchDeleteTest() {
         Branch response = BranchUtil.getApi().branchCreate(branch_data);
-        String itemIdentifier = branch_data.getItemUuid();
+        String itemIdentifier = branch_data.getItemIdentifier();
         BranchUtil.getApi().branchDelete(itemIdentifier);
-        List<Branch> check_list = findBranch(branch_data.getItemUuid());
+        List<Branch> check_list = findBranch(branch_data.getItemIdentifier());
         Assert.assertTrue(check_list.isEmpty());
         cleanUp();
     }
@@ -73,7 +73,7 @@ public class BranchApiTest {
         // Extract Branch using the identifier of one of the versions
         //
         BranchApi.BranchListQueryParams query_view_params = new BranchApi.BranchListQueryParams();
-        query_view_params.withUuid(response.get(0).getItemUuid());
+        query_view_params.withUuid(response.get(0).getItemIdentifier());
         List<Branch> version_response = BranchUtil.branchList(api, query_view_params);
         Assert.assertEquals(version_response.size(), 1);
         cleanUp();
@@ -91,19 +91,19 @@ public class BranchApiTest {
     @Test
     public void branchReadTest() {
         maybeCreate();
-        String itemIdentifier = branch_data.getItemUuid();
+        String itemIdentifier = branch_data.getItemIdentifier();
         Branch response = BranchUtil.getApi().branchRead(itemIdentifier);
-        Assert.assertEquals(response.getItemUuid(), branch_data.getItemUuid());
+        Assert.assertEquals(response.getItemIdentifier(), branch_data.getItemIdentifier());
         cleanUp();
     }
-    
+
     @Test
     public void branchUpdateTest() {
         maybeCreate();
         //
         // Change Data on the Virtual Product
         //
-        String itemIdentifier = branch_data.getItemUuid();
+        String itemIdentifier = branch_data.getItemIdentifier();
         Branch data = BranchUtil.getApi().branchRead(itemIdentifier);
         data.setName("Changed Name");
         data.setLocked(true);
@@ -119,16 +119,16 @@ public class BranchApiTest {
 
     private Branch setupBranch(){
 
-        BranchBuilder contractBuilder = new BranchBuilder()
+        BranchBuilder branchBuilder = new BranchBuilder()
                 .withDefaults()
                 .withCode("testcode")
                 .withName("Test Code")
                 .withEffectiveDate(ConversionUtil.dateValue(2020, 1,1))
                 .withBranchType(Branch.BranchTypeEnum.LOCAL);
 
-        Branch data = contractBuilder.getBranch();
+        Branch data = branchBuilder.getBranch();
 
-        cleanupItems.add(data.getItemUuid());
+        cleanupItems.add(data.getItemIdentifier());
 
         return data;
     }
@@ -142,13 +142,13 @@ public class BranchApiTest {
             query_params.withUuid(identifier);
             List<Branch> itemList = BranchUtil.getApi().branchList(query_params);
             for (Branch itemLoop : itemList) {
-                BranchUtil.getApi().branchDelete(itemLoop.getItemUuid());
+                BranchUtil.getApi().branchDelete(itemLoop.getItemIdentifier());
             }
         }
     }
 
     private void maybeCreate(){
-        List<Branch> check_list = findBranch(branch_data.getItemUuid());
+        List<Branch> check_list = findBranch(branch_data.getItemIdentifier());
         if(check_list.isEmpty()){
             Branch create_response = BranchUtil.getApi().branchCreate(branch_data);
         }
@@ -156,7 +156,7 @@ public class BranchApiTest {
 
     private List<Branch> findBranch(String inIdentifier){
         BranchApi.BranchListQueryParams check_query = new BranchApi.BranchListQueryParams();
-        check_query.withUuid(branch_data.getItemUuid());
+        check_query.withUuid(branch_data.getItemIdentifier());
         return BranchUtil.branchList(api, check_query);
     }
 

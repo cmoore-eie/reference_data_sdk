@@ -31,13 +31,13 @@ public interface DealerApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this dealer. (required)
+   * @param itemIdentifier A unique value identifying this dealer. (required)
    */
-  @RequestLine("DELETE /dealer/{itemUuid}/")
+  @RequestLine("DELETE /dealer/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  void dealerDelete(@Param("itemUuid") String itemUuid);
+  void dealerDelete(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
@@ -110,40 +110,40 @@ public interface DealerApi extends ApiClient.Api {
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this dealer. (required)
+   * @param itemIdentifier A unique value identifying this dealer. (required)
    * @param data  (required)
    * @return Dealer
    */
-  @RequestLine("PATCH /dealer/{itemUuid}/")
+  @RequestLine("PATCH /dealer/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Dealer dealerPartialUpdate(@Param("itemUuid") String itemUuid, Dealer data);
+  Dealer dealerPartialUpdate(@Param("itemIdentifier") String itemIdentifier, Dealer data);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this dealer. (required)
+   * @param itemIdentifier A unique value identifying this dealer. (required)
    * @return Dealer
    */
-  @RequestLine("GET /dealer/{itemUuid}/")
+  @RequestLine("GET /dealer/{itemIdentifier}/")
   @Headers({
     "Accept: application/json",
   })
-  Dealer dealerRead(@Param("itemUuid") String itemUuid);
+  Dealer dealerRead(@Param("itemIdentifier") String itemIdentifier);
 
   /**
    * 
    * 
-   * @param itemUuid A unique value identifying this dealer. (required)
+   * @param itemIdentifier A unique value identifying this dealer. (required)
    * @param data  (required)
    * @return Dealer
    */
-  @RequestLine("PUT /dealer/{itemUuid}/")
+  @RequestLine("PUT /dealer/{itemIdentifier}/")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  Dealer dealerUpdate(@Param("itemUuid") String itemUuid, Dealer data);
+  Dealer dealerUpdate(@Param("itemIdentifier") String itemIdentifier, Dealer data);
 }

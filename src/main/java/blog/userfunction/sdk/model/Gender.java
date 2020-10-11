@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Gender.JSON_PROPERTY_LOCKED,
   Gender.JSON_PROPERTY_CREATE_TIME,
   Gender.JSON_PROPERTY_UPDATE_TIME,
-  Gender.JSON_PROPERTY_ITEM_UUID,
+  Gender.JSON_PROPERTY_ITEM_IDENTIFIER,
   Gender.JSON_PROPERTY_EFFECTIVE_DATE,
   Gender.JSON_PROPERTY_EXPIRATION_DATE
 })
@@ -51,19 +51,19 @@ public class Gender {
   public static final String JSON_PROPERTY_LOCKED = "locked";
   private JsonNullable<Boolean> locked = JsonNullable.<Boolean>undefined();
 
-  public static final String JSON_PROPERTY_CREATE_TIME = "create_time";
+  public static final String JSON_PROPERTY_CREATE_TIME = "createTime";
   private JsonNullable<Date> createTime = JsonNullable.<Date>undefined();
 
-  public static final String JSON_PROPERTY_UPDATE_TIME = "update_time";
+  public static final String JSON_PROPERTY_UPDATE_TIME = "updateTime";
   private JsonNullable<Date> updateTime = JsonNullable.<Date>undefined();
 
-  public static final String JSON_PROPERTY_ITEM_UUID = "item_uuid";
-  private String itemUuid;
+  public static final String JSON_PROPERTY_ITEM_IDENTIFIER = "itemIdentifier";
+  private String itemIdentifier;
 
-  public static final String JSON_PROPERTY_EFFECTIVE_DATE = "effective_date";
+  public static final String JSON_PROPERTY_EFFECTIVE_DATE = "effectiveDate";
   private Date effectiveDate;
 
-  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expiration_date";
+  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
   private JsonNullable<Date> expirationDate = JsonNullable.<Date>undefined();
 
 
@@ -221,27 +221,27 @@ public class Gender {
   }
 
 
-  public Gender itemUuid(String itemUuid) {
+  public Gender itemIdentifier(String itemIdentifier) {
     
-    this.itemUuid = itemUuid;
+    this.itemIdentifier = itemIdentifier;
     return this;
   }
 
    /**
-   * Get itemUuid
-   * @return itemUuid
+   * Get itemIdentifier
+   * @return itemIdentifier
   **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_ITEM_UUID)
+  @JsonProperty(JSON_PROPERTY_ITEM_IDENTIFIER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getItemUuid() {
-    return itemUuid;
+  public String getItemIdentifier() {
+    return itemIdentifier;
   }
 
 
-  public void setItemUuid(String itemUuid) {
-    this.itemUuid = itemUuid;
+  public void setItemIdentifier(String itemIdentifier) {
+    this.itemIdentifier = itemIdentifier;
   }
 
 
@@ -318,14 +318,14 @@ public class Gender {
         Objects.equals(this.locked, gender.locked) &&
         Objects.equals(this.createTime, gender.createTime) &&
         Objects.equals(this.updateTime, gender.updateTime) &&
-        Objects.equals(this.itemUuid, gender.itemUuid) &&
+        Objects.equals(this.itemIdentifier, gender.itemIdentifier) &&
         Objects.equals(this.effectiveDate, gender.effectiveDate) &&
         Objects.equals(this.expirationDate, gender.expirationDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, locked, createTime, updateTime, itemUuid, effectiveDate, expirationDate);
+    return Objects.hash(code, name, locked, createTime, updateTime, itemIdentifier, effectiveDate, expirationDate);
   }
 
 
@@ -338,7 +338,7 @@ public class Gender {
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
     sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
-    sb.append("    itemUuid: ").append(toIndentedString(itemUuid)).append("\n");
+    sb.append("    itemIdentifier: ").append(toIndentedString(itemIdentifier)).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("}");
